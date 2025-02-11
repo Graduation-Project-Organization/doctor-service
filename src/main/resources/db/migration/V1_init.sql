@@ -1,0 +1,1 @@
+-- Here you type the SQL commands to create the tables
