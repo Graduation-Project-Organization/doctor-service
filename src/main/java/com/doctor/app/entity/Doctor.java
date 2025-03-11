@@ -6,18 +6,21 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table
+@Table(name = "doctors")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class Doctor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String firstName;
-    private String middleName;
-    private String lastName;
-    private String gender;
-    private String profilePicture;
-    private String bio;
+    private Integer id;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "bio_information_id")
+    private BioInformation bioInformation;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "profile_information_id")
+    private ProfileInformation profileInformation;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "contact_information_id")
+    private ContactInformation contactInformation;
 }

@@ -1,14 +1,13 @@
 package com.doctor.app.service;
 
-import com.doctor.app.entity.Doctor;
-
-import java.util.List;
-import java.util.Optional;
+import com.doctor.app.dto.BioInformationRequest;
+import com.doctor.app.dto.ContactInformationRequest;
+import com.doctor.app.dto.ProfileInformationRequest;
 
 public interface DoctorService {
-    public List<Doctor> getDoctors();
-    public Optional<Doctor> getDoctor(int id);
-    public Optional<Doctor> addDoctor(Doctor doctor);
-    public Optional<Doctor> updateDoctor(Doctor doctor);
-    public void deleteDoctor(int id);
+    void saveBioInformation(Integer id, BioInformationRequest bioInformationRequest);
+
+    void saveProfileInformation(Integer id, ProfileInformationRequest profileInformationRequest);
+
+    void saveContactInformation(Integer id, ContactInformationRequest contactInformationRequest);
 }
