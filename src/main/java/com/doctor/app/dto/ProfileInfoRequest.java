@@ -12,7 +12,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class ProfileInformationRequest {
+public class ProfileInfoRequest {
     @NotEmpty(message = "Medical License is required")
     @Size(max = 20)
     private Integer medicalLicense;

@@ -1,15 +1,14 @@
 package com.doctor.app.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Table(name = "doctors")
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Setter
+@Getter
 public class Doctor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,4 +22,11 @@ public class Doctor {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "contact_information_id")
     private ContactInformation contactInformation;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "education_information_id")
+    private EducationInformation educationInformation;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "practice_information_id")
+    private PracticeInformation practiceInformation;
+    private AdditionalInformation additionalInformation;
 }

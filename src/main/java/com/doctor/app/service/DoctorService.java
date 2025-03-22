@@ -1,13 +1,17 @@
 package com.doctor.app.service;
 
-import com.doctor.app.dto.BioInformationRequest;
-import com.doctor.app.dto.ContactInformationRequest;
-import com.doctor.app.dto.ProfileInformationRequest;
+import com.doctor.app.dto.*;
 
 public interface DoctorService {
-    void saveBioInformation(Integer id, BioInformationRequest bioInformationRequest);
+    void saveBioInformation(Integer id, BioInfoRequest bioInfoRequest);
 
-    void saveProfileInformation(Integer id, ProfileInformationRequest profileInformationRequest);
+    void saveProfileInformation(Integer id, ProfileInfoRequest profileInformationRequest);
 
-    void saveContactInformation(Integer id, ContactInformationRequest contactInformationRequest);
+    void saveContactInformation(Integer id, ContactInfoRequest contactInfoRequest);
+
+    void saveEducationInformation(Integer id, EducationInfoRequest educationInfoRequest);
+
+    void savePracticeInformation(Integer id, PracticeInfoRequest practiceInfoRequest);
+
+    void saveAdditionalInformation(Integer id, AdditionalInfoRequest additionalInfoRequest);
 }
