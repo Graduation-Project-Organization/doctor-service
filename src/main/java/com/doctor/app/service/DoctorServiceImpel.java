@@ -1,12 +1,13 @@
 package com.doctor.app.service;
 
-
 import com.doctor.app.dto.*;
 import com.doctor.app.entity.*;
 import com.doctor.app.exception.ResourceNotFoundException;
 import com.doctor.app.repository.DoctorRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import javax.print.Doc;
 
 @Service
 @RequiredArgsConstructor
@@ -16,15 +17,17 @@ public class DoctorServiceImpel implements DoctorService {
     @Override
     public void saveBioInformation(Integer id, BioInfoRequest bioInfoRequest) {
         try {
-            Doctor doctor = doctorRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Doctor not found"));
-            if (doctor.getBioInformation() == null) {
-                doctor.setBioInformation(new BioInformation());
-            }
-            doctor.getBioInformation().setFirstName(bioInfoRequest.getFirstName());
-            doctor.getBioInformation().setMiddleName(bioInfoRequest.getMiddleName());
-            doctor.getBioInformation().setLastName(bioInfoRequest.getLastName());
-            doctor.getBioInformation().setGender(bioInfoRequest.getGender());
-            doctor.getBioInformation().setDateOfBirth(bioInfoRequest.getDateOfBirth());
+            Doctor doctor = doctorRepository.findById(id).orElseGet(() -> {
+                Doctor newDoctor = new Doctor();
+                newDoctor.setId(id);
+                return newDoctor;
+            });
+            doctor.setFirstName(bioInfoRequest.getFirstName());
+            doctor.setMiddleName(bioInfoRequest.getMiddleName());
+            doctor.setLastName(bioInfoRequest.getLastName());
+            doctor.setGender(bioInfoRequest.getGender());
+            doctor.setDateOfBirth(bioInfoRequest.getDateOfBirth());
+            System.out.println(bioInfoRequest.getDateOfBirth());
             doctorRepository.save(doctor);
         } catch (ResourceNotFoundException e) {
             throw new ResourceNotFoundException(e.getMessage());
@@ -36,15 +39,15 @@ public class DoctorServiceImpel implements DoctorService {
     @Override
     public void saveProfileInformation(Integer id, ProfileInfoRequest profileInformationRequest) {
         try {
-            Doctor doctor = doctorRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Doctor not found"));
-            if (doctor.getProfileInformation() == null) {
-                doctor.setProfileInformation(new ProfileInformation());
-            }
-            doctor.getProfileInformation().setMedicalLicense(profileInformationRequest.getMedicalLicense());
-            doctor.getProfileInformation().setYearsOfExperience(profileInformationRequest.getYearsOfExperience());
-            doctor.getProfileInformation().setMedicalLicenseExpiryDate(profileInformationRequest.getMedicalLicenseExpiryDate());
-            doctor.getProfileInformation().setBiography(profileInformationRequest.getBiography());
-            doctor.getProfileInformation().setProfileImage(profileInformationRequest.getProfileImage().getBytes());
+            Doctor doctor = doctorRepository.findById(id).orElseGet(() -> {
+                Doctor newDoctor = new Doctor();
+                newDoctor.setId(id);
+                return newDoctor;
+            });            doctor.setMedicalLicense(profileInformationRequest.getMedicalLicense());
+            doctor.setYearsOfExperience(profileInformationRequest.getYearsOfExperience());
+            doctor.setMedicalLicenseExpiryDate(profileInformationRequest.getMedicalLicenseExpiryDate());
+            doctor.setBiography(profileInformationRequest.getBiography());
+            doctor.setProfileImage(profileInformationRequest.getProfileImage().getBytes());
             doctorRepository.save(doctor);
         } catch (ResourceNotFoundException e) {
             throw new ResourceNotFoundException(e.getMessage());
@@ -56,15 +59,15 @@ public class DoctorServiceImpel implements DoctorService {
     @Override
     public void saveContactInformation(Integer id, ContactInfoRequest contactInfoRequest) {
         try {
-            Doctor doctor = doctorRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Doctor not found"));
-            if (doctor.getContactInformation() == null) {
-                doctor.setContactInformation(new ContactInformation());
-            }
-            doctor.getContactInformation().setEmail(contactInfoRequest.getEmail());
-            doctor.getContactInformation().setPhoneNumber(contactInfoRequest.getPhoneNumber());
-            doctor.getContactInformation().setCountry(contactInfoRequest.getCountry());
-            doctor.getContactInformation().setCity(contactInfoRequest.getCity());
-            doctor.getContactInformation().setState(contactInfoRequest.getState());
+            Doctor doctor = doctorRepository.findById(id).orElseGet(() -> {
+                Doctor newDoctor = new Doctor();
+                newDoctor.setId(id);
+                return newDoctor;
+            });            doctor.setEmail(contactInfoRequest.getEmail());
+            doctor.setPhoneNumber(contactInfoRequest.getPhoneNumber());
+            doctor.setCountry(contactInfoRequest.getCountry());
+            doctor.setCity(contactInfoRequest.getCity());
+            doctor.setState(contactInfoRequest.getState());
             doctorRepository.save(doctor);
         } catch (ResourceNotFoundException e) {
             throw new ResourceNotFoundException(e.getMessage());
@@ -76,15 +79,15 @@ public class DoctorServiceImpel implements DoctorService {
     @Override
     public void saveEducationInformation(Integer id, EducationInfoRequest educationInfoRequest) {
         try {
-            Doctor doctor = doctorRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Doctor not found"));
-            if (doctor.getEducationInformation() == null) {
-                doctor.setEducationInformation(new EducationInformation());
-            }
-            doctor.getEducationInformation().setSchoolName(educationInfoRequest.getSchoolName());
-            doctor.getEducationInformation().setGraduationYear(educationInfoRequest.getGraduationYear());
-            doctor.getEducationInformation().setSpecialization(educationInfoRequest.getSpecialization());
-            doctor.getEducationInformation().setSpecialities(educationInfoRequest.getSpecialities());
-            doctor.getEducationInformation().setProfileImage(educationInfoRequest.getProfileImage().getBytes());
+            Doctor doctor = doctorRepository.findById(id).orElseGet(() -> {
+                Doctor newDoctor = new Doctor();
+                newDoctor.setId(id);
+                return newDoctor;
+            });            doctor.setSchoolName(educationInfoRequest.getSchoolName());
+            doctor.setGraduationYear(educationInfoRequest.getGraduationYear());
+            doctor.setSpecialization(educationInfoRequest.getSpecialization());
+            doctor.setSpecialities(educationInfoRequest.getSpecialities());
+            doctor.setProfileImage(educationInfoRequest.getProfileImage().getBytes());
             doctorRepository.save(doctor);
         } catch (ResourceNotFoundException e) {
             throw new ResourceNotFoundException(e.getMessage());
@@ -96,19 +99,19 @@ public class DoctorServiceImpel implements DoctorService {
     @Override
     public void savePracticeInformation(Integer id, PracticeInfoRequest practiceInfoRequest) {
         try {
-            Doctor doctor = doctorRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Doctor not found"));
-            if (doctor.getPracticeInformation() == null) {
-                doctor.setPracticeInformation(new PracticeInformation());
-            }
-            doctor.getPracticeInformation().setHospitalName(practiceInfoRequest.getHospitalName());
-            doctor.getPracticeInformation().setHourlyCharge(practiceInfoRequest.getHourlyCharge());
-            doctor.getPracticeInformation().setHospitalAddress(practiceInfoRequest.getHospitalAddress());
-            doctor.getPracticeInformation().setHospitalContactNumber(practiceInfoRequest.getHospitalContactNumber());
-            doctor.getPracticeInformation().setHospitalEmail(practiceInfoRequest.getHospitalEmail());
-            doctor.getPracticeInformation().setHospitalWebsite(practiceInfoRequest.getHospitalWebsite());
-            doctor.getPracticeInformation().setHospitalHoursOfOperation(practiceInfoRequest.getHospitalHoursOfOperation());
-            doctor.getPracticeInformation().setInsurance(practiceInfoRequest.isInsurance());
-            doctor.getPracticeInformation().setHospitalServices(practiceInfoRequest.getHospitalServices());
+            Doctor doctor = doctorRepository.findById(id).orElseGet(() -> {
+                Doctor newDoctor = new Doctor();
+                newDoctor.setId(id);
+                return newDoctor;
+            });            doctor.setHospitalName(practiceInfoRequest.getHospitalName());
+            doctor.setHourlyCharge(practiceInfoRequest.getHourlyCharge());
+            doctor.setHospitalAddress(practiceInfoRequest.getHospitalAddress());
+            doctor.setHospitalContactNumber(practiceInfoRequest.getHospitalContactNumber());
+            doctor.setHospitalEmail(practiceInfoRequest.getHospitalEmail());
+            doctor.setHospitalWebsite(practiceInfoRequest.getHospitalWebsite());
+            doctor.setHospitalHoursOfOperation(practiceInfoRequest.getHospitalHoursOfOperation());
+            doctor.setInsurance(practiceInfoRequest.isInsurance());
+            doctor.setHospitalServices(practiceInfoRequest.getHospitalServices());
             doctorRepository.save(doctor);
         } catch (ResourceNotFoundException e) {
             throw new ResourceNotFoundException(e.getMessage());
@@ -120,14 +123,14 @@ public class DoctorServiceImpel implements DoctorService {
     @Override
     public void saveAdditionalInformation(Integer id, AdditionalInfoRequest additionalInfoRequest) {
         try {
-            Doctor doctor = doctorRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Doctor not found"));
-            if (doctor.getAdditionalInformation() == null) {
-                doctor.setAdditionalInformation(new AdditionalInformation());
-            }
-            doctor.getAdditionalInformation().setEducationHistory(additionalInfoRequest.getEducationHistory());
-            doctor.getAdditionalInformation().setResearch(additionalInfoRequest.getResearch());
-            doctor.getAdditionalInformation().setAwards(additionalInfoRequest.getAwards());
-            doctor.getAdditionalInformation().setAdditionalDocument(additionalInfoRequest.getAdditionalDocument().getBytes());
+            Doctor doctor = doctorRepository.findById(id).orElseGet(() -> {
+                Doctor newDoctor = new Doctor();
+                newDoctor.setId(id);
+                return newDoctor;
+            });            doctor.setEducationHistory(additionalInfoRequest.getEducationHistory());
+            doctor.setResearch(additionalInfoRequest.getResearch());
+            doctor.setAwards(additionalInfoRequest.getAwards());
+            doctor.setAdditionalDocument(additionalInfoRequest.getAdditionalDocument().getBytes());
             doctorRepository.save(doctor);
         } catch (ResourceNotFoundException e) {
             throw new ResourceNotFoundException(e.getMessage());

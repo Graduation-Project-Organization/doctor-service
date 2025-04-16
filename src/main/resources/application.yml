@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: doctor-service
+
+  data:
+    mongodb:
+      uri: mongodb+srv://abdallahelagamy2:abdallahelagamy2@cluster0.atmup2y.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+      database: doctor-service
