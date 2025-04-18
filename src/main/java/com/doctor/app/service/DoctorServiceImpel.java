@@ -15,13 +15,9 @@ public class DoctorServiceImpel implements DoctorService {
     private final DoctorRepository doctorRepository;
 
     @Override
-    public void saveBioInformation(Integer id, BioInfoRequest bioInfoRequest) {
+    public void saveBioInformation(String userId, BioInfoRequest bioInfoRequest) {
         try {
-            Doctor doctor = doctorRepository.findById(id).orElseGet(() -> {
-                Doctor newDoctor = new Doctor();
-                newDoctor.setId(id);
-                return newDoctor;
-            });
+            Doctor doctor = doctorRepository.findByUserId(userId);
             doctor.setFirstName(bioInfoRequest.getFirstName());
             doctor.setMiddleName(bioInfoRequest.getMiddleName());
             doctor.setLastName(bioInfoRequest.getLastName());
@@ -37,13 +33,10 @@ public class DoctorServiceImpel implements DoctorService {
     }
 
     @Override
-    public void saveProfileInformation(Integer id, ProfileInfoRequest profileInformationRequest) {
+    public void saveProfileInformation(String userId, ProfileInfoRequest profileInformationRequest) {
         try {
-            Doctor doctor = doctorRepository.findById(id).orElseGet(() -> {
-                Doctor newDoctor = new Doctor();
-                newDoctor.setId(id);
-                return newDoctor;
-            });            doctor.setMedicalLicense(profileInformationRequest.getMedicalLicense());
+            Doctor doctor = doctorRepository.findByUserId(userId);
+            doctor.setMedicalLicense(profileInformationRequest.getMedicalLicense());
             doctor.setYearsOfExperience(profileInformationRequest.getYearsOfExperience());
             doctor.setMedicalLicenseExpiryDate(profileInformationRequest.getMedicalLicenseExpiryDate());
             doctor.setBiography(profileInformationRequest.getBiography());
@@ -57,13 +50,10 @@ public class DoctorServiceImpel implements DoctorService {
     }
 
     @Override
-    public void saveContactInformation(Integer id, ContactInfoRequest contactInfoRequest) {
+    public void saveContactInformation(String userId, ContactInfoRequest contactInfoRequest) {
         try {
-            Doctor doctor = doctorRepository.findById(id).orElseGet(() -> {
-                Doctor newDoctor = new Doctor();
-                newDoctor.setId(id);
-                return newDoctor;
-            });            doctor.setEmail(contactInfoRequest.getEmail());
+            Doctor doctor = doctorRepository.findByUserId(userId);
+            doctor.setEmail(contactInfoRequest.getEmail());
             doctor.setPhoneNumber(contactInfoRequest.getPhoneNumber());
             doctor.setCountry(contactInfoRequest.getCountry());
             doctor.setCity(contactInfoRequest.getCity());
@@ -77,13 +67,10 @@ public class DoctorServiceImpel implements DoctorService {
     }
 
     @Override
-    public void saveEducationInformation(Integer id, EducationInfoRequest educationInfoRequest) {
+    public void saveEducationInformation(String userId, EducationInfoRequest educationInfoRequest) {
         try {
-            Doctor doctor = doctorRepository.findById(id).orElseGet(() -> {
-                Doctor newDoctor = new Doctor();
-                newDoctor.setId(id);
-                return newDoctor;
-            });            doctor.setSchoolName(educationInfoRequest.getSchoolName());
+            Doctor doctor = doctorRepository.findByUserId(userId);
+            doctor.setSchoolName(educationInfoRequest.getSchoolName());
             doctor.setGraduationYear(educationInfoRequest.getGraduationYear());
             doctor.setSpecialization(educationInfoRequest.getSpecialization());
             doctor.setSpecialities(educationInfoRequest.getSpecialities());
@@ -97,13 +84,10 @@ public class DoctorServiceImpel implements DoctorService {
     }
 
     @Override
-    public void savePracticeInformation(Integer id, PracticeInfoRequest practiceInfoRequest) {
+    public void savePracticeInformation(String userId, PracticeInfoRequest practiceInfoRequest) {
         try {
-            Doctor doctor = doctorRepository.findById(id).orElseGet(() -> {
-                Doctor newDoctor = new Doctor();
-                newDoctor.setId(id);
-                return newDoctor;
-            });            doctor.setHospitalName(practiceInfoRequest.getHospitalName());
+            Doctor doctor = doctorRepository.findByUserId(userId);
+            doctor.setHospitalName(practiceInfoRequest.getHospitalName());
             doctor.setHourlyCharge(practiceInfoRequest.getHourlyCharge());
             doctor.setHospitalAddress(practiceInfoRequest.getHospitalAddress());
             doctor.setHospitalContactNumber(practiceInfoRequest.getHospitalContactNumber());
@@ -121,13 +105,10 @@ public class DoctorServiceImpel implements DoctorService {
     }
 
     @Override
-    public void saveAdditionalInformation(Integer id, AdditionalInfoRequest additionalInfoRequest) {
+    public void saveAdditionalInformation(String userId, AdditionalInfoRequest additionalInfoRequest) {
         try {
-            Doctor doctor = doctorRepository.findById(id).orElseGet(() -> {
-                Doctor newDoctor = new Doctor();
-                newDoctor.setId(id);
-                return newDoctor;
-            });            doctor.setEducationHistory(additionalInfoRequest.getEducationHistory());
+            Doctor doctor = doctorRepository.findByUserId(userId);
+            doctor.setEducationHistory(additionalInfoRequest.getEducationHistory());
             doctor.setResearch(additionalInfoRequest.getResearch());
             doctor.setAwards(additionalInfoRequest.getAwards());
             doctor.setAdditionalDocument(additionalInfoRequest.getAdditionalDocument().getBytes());

@@ -15,6 +15,7 @@ import java.util.Set;
 public class Doctor {
     @Id
     private Integer id;
+    private String userId;
     private String firstName;
     private String middleName;
     private String lastName;

@@ -3,15 +3,15 @@ package com.doctor.app.service;
 import com.doctor.app.dto.*;
 
 public interface DoctorService {
-    void saveBioInformation(Integer id, BioInfoRequest bioInfoRequest);
+    void saveBioInformation(String userId, BioInfoRequest bioInfoRequest);
 
-    void saveProfileInformation(Integer id, ProfileInfoRequest profileInformationRequest);
+    void saveProfileInformation(String userId, ProfileInfoRequest profileInformationRequest);
 
-    void saveContactInformation(Integer id, ContactInfoRequest contactInfoRequest);
+    void saveContactInformation(String userId, ContactInfoRequest contactInfoRequest);
 
-    void saveEducationInformation(Integer id, EducationInfoRequest educationInfoRequest);
+    void saveEducationInformation(String userId, EducationInfoRequest educationInfoRequest);
 
-    void savePracticeInformation(Integer id, PracticeInfoRequest practiceInfoRequest);
+    void savePracticeInformation(String userId, PracticeInfoRequest practiceInfoRequest);
 
-    void saveAdditionalInformation(Integer id, AdditionalInfoRequest additionalInfoRequest);
+    void saveAdditionalInformation(String userId, AdditionalInfoRequest additionalInfoRequest);
 }

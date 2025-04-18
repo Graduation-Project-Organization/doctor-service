@@ -12,45 +12,45 @@ import org.springframework.web.bind.annotation.*;
 public class DoctorController {
     private final DoctorService doctorService;
 
-    @PostMapping("/{id}/bio-data")
+    @PostMapping("/{userId}/bio-data")
     public ResponseEntity<?> saveBioData(@RequestBody BioInfoRequest bioInfoRequest,
-                                         @PathVariable Integer id) {
-        doctorService.saveBioInformation(id, bioInfoRequest);
+                                         @PathVariable String userId) {
+        doctorService.saveBioInformation(userId, bioInfoRequest);
         return ResponseEntity.ok("Bio data saved successfully");
     }
 
-    @PostMapping("/{id}/profile-data")
+    @PostMapping("/{userId}/profile-data")
     public ResponseEntity<?> saveProfileData(@RequestBody ProfileInfoRequest profileInfoRequest,
-                                             @PathVariable Integer id) {
-        doctorService.saveProfileInformation(id, profileInfoRequest);
+                                             @PathVariable String userId) {
+        doctorService.saveProfileInformation(userId, profileInfoRequest);
         return ResponseEntity.ok("Profile data saved successfully");
     }
 
-    @PostMapping("/{id}/contact-data")
+    @PostMapping("/{userId}/contact-data")
     public ResponseEntity<?> saveContactData(@RequestBody ContactInfoRequest contactInfoRequest,
-                                             @PathVariable Integer id) {
-        doctorService.saveContactInformation(id, contactInfoRequest);
+                                             @PathVariable String userId) {
+        doctorService.saveContactInformation(userId, contactInfoRequest);
         return ResponseEntity.ok("Contact data saved successfully");
     }
 
-    @PostMapping("/{id}/education-data")
+    @PostMapping("/{userId}/education-data")
     public ResponseEntity<?> saveEducationData(@RequestBody EducationInfoRequest educationInfoRequest,
-                                               @PathVariable Integer id) {
-        doctorService.saveEducationInformation(id, educationInfoRequest);
+                                               @PathVariable String userId) {
+        doctorService.saveEducationInformation(userId, educationInfoRequest);
         return ResponseEntity.ok("Education data saved successfully");
     }
 
-    @PostMapping("/{id}/practice-data")
+    @PostMapping("/{userId}/practice-data")
     public ResponseEntity<?> savePracticeDate(@RequestBody PracticeInfoRequest practiceInfoRequest,
-                                              @PathVariable Integer id) {
-        doctorService.savePracticeInformation(id, practiceInfoRequest);
+                                              @PathVariable String userId) {
+        doctorService.savePracticeInformation(userId, practiceInfoRequest);
         return ResponseEntity.ok("Practice data saved successfully");
     }
 
-    @PostMapping("/{id}/additional-data")
+    @PostMapping("/{userId}/additional-data")
     public ResponseEntity<?> saveAdditionalData(@RequestBody AdditionalInfoRequest additionalInfoRequest,
-                                              @PathVariable Integer id) {
-        doctorService.saveAdditionalInformation(id, additionalInfoRequest);
+                                                @PathVariable String userId) {
+        doctorService.saveAdditionalInformation(userId, additionalInfoRequest);
         return ResponseEntity.ok("Practice data saved successfully");
     }
 }
