@@ -15,6 +15,22 @@ public class DoctorServiceImpel implements DoctorService {
     private final DoctorRepository doctorRepository;
 
     @Override
+    public void createDoctor(DoctorRequest doctorRequest) {
+        try {
+            Doctor doctor = new Doctor();
+            doctor.setUserId(doctorRequest.getUserId());
+            doctor.setFirstName(doctorRequest.getFirstName());
+            doctor.setLastName(doctorRequest.getLastName());
+            doctor.setTrackingNumber(doctorRequest.getTrackingNumber());
+            doctor.setEmail(doctorRequest.getEmail());
+            doctor.setPhoneNumber(doctorRequest.getPhoneNumber());
+            doctorRepository.save(doctor);
+        } catch (Exception e) {
+            throw new RuntimeException("An error occurred while creating the doctor");
+        }
+    }
+
+    @Override
     public void saveBioInformation(String userId, BioInfoRequest bioInfoRequest) {
         try {
             Doctor doctor = doctorRepository.findByUserId(userId);

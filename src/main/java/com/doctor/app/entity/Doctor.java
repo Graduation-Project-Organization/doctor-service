@@ -23,6 +23,7 @@ public class Doctor {
     private String gender;
     private String email;
     private int phoneNumber;
+    private int trackingNumber;
     private String city;
     private String state;
     private String country;

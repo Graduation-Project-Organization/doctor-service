@@ -3,6 +3,8 @@ package com.doctor.app.service;
 import com.doctor.app.dto.*;
 
 public interface DoctorService {
+    void createDoctor(DoctorRequest doctorRequest);
+
     void saveBioInformation(String userId, BioInfoRequest bioInfoRequest);
 
     void saveProfileInformation(String userId, ProfileInfoRequest profileInformationRequest);

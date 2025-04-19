@@ -12,6 +12,12 @@ import org.springframework.web.bind.annotation.*;
 public class DoctorController {
     private final DoctorService doctorService;
 
+    @PostMapping("/create-doctor")
+    public ResponseEntity<?> createDoctor(@RequestBody DoctorRequest doctorRequest) {
+        doctorService.createDoctor(doctorRequest);
+        return ResponseEntity.ok("Doctor created successfully");
+    }
+
     @PostMapping("/{userId}/bio-data")
     public ResponseEntity<?> saveBioData(@RequestBody BioInfoRequest bioInfoRequest,
                                          @PathVariable String userId) {
