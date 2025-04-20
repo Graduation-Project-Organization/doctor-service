@@ -20,5 +20,5 @@ public class DoctorRequest {
     @NotEmpty(message = "Email cannot be empty")
     private String email;
     @NotEmpty(message = "Phone Number cannot be empty")
-    private int phoneNumber;
+    private long phoneNumber;
 }

@@ -1,6 +1,7 @@
 package com.doctor.app.entity;
 
 import lombok.*;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -14,7 +15,7 @@ import java.util.Set;
 @Getter
 public class Doctor {
     @Id
-    private Integer id;
+    private ObjectId id;
     private String userId;
     private String firstName;
     private String middleName;
@@ -22,7 +23,7 @@ public class Doctor {
     private Date dateOfBirth;
     private String gender;
     private String email;
-    private int phoneNumber;
+    private long phoneNumber;
     private int trackingNumber;
     private String city;
     private String state;
