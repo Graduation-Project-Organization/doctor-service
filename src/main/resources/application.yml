@@ -4,5 +4,5 @@ spring:
 
   data:
     mongodb:
-      uri: mongodb+srv://abdallahelagamy2:abdallahelagamy2@cluster0.atmup2y.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
-      database: doctor-service
+      uri: mongodb+srv://admin-eslam:test123@cluster0.8wgail5.mongodb.net/medical-app
+      database: medical-app

@@ -23,8 +23,8 @@ public class Doctor {
     private Date dateOfBirth;
     private String gender;
     private String email;
-    private long phoneNumber;
-    private int trackingNumber;
+    private String phoneNumber;
+    private String trackingNumber;
     private String city;
     private String state;
     private String country;
@@ -38,7 +38,7 @@ public class Doctor {
     private Set<String> specialities;
     private byte[] educationProfileImage;
     private int medicalLicense;
-    private int yearsOfExperience;
+    private Integer yearsOfExperience;
     private Date medicalLicenseExpiryDate;
     private String biography;
     private byte[] profileImage;
