@@ -4,6 +4,7 @@ import lombok.*;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.annotation.CreatedDate;
 
 import java.util.Date;
 import java.util.Set;
@@ -16,7 +17,7 @@ import java.util.Set;
 public class Doctor {
     @Id
     private ObjectId id;
-    private String userId;
+    private ObjectId userId;
     private String firstName;
     private String middleName;
     private String lastName;
@@ -33,11 +34,11 @@ public class Doctor {
     private String awards;
     private byte[] additionalDocument;
     private String schoolName;
-    private int graduationYear;
+    private String graduationYear;
     private String specialization;
     private Set<String> specialities;
     private byte[] educationProfileImage;
-    private int medicalLicense;
+    private String medicalLicense;
     private Integer yearsOfExperience;
     private Date medicalLicenseExpiryDate;
     private String biography;
@@ -51,4 +52,6 @@ public class Doctor {
     private String hospitalHoursOfOperation;
     private boolean insurance;
     private Set<String> hospitalServices;
+    @CreatedDate
+    private Date createdAt;
 }

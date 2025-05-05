@@ -15,7 +15,7 @@ import java.util.Date;
 public class ProfileInfoRequest {
     @NotEmpty(message = "Medical License is required")
     @Size(max = 20)
-    private Integer medicalLicense;
+    private String medicalLicense;
     @NotEmpty(message = "Years of experience is required")
     private Integer yearsOfExperience;
     @NotEmpty(message = "Medical License expiry date is required")

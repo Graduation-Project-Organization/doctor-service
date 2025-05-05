@@ -15,7 +15,7 @@ public class EducationInfoRequest {
     @NotEmpty(message = "School name is required")
     private String schoolName;
     @NotEmpty(message = "Graduation year is required")
-    private int graduationYear;
+    private String graduationYear;
     @NotEmpty(message = "Specialization is required")
     private String specialization;
     private Set<String> specialities;

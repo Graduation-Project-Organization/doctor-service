@@ -6,7 +6,7 @@ import com.doctor.app.exception.ResourceNotFoundException;
 import com.doctor.app.repository.DoctorRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
+import org.bson.types.ObjectId;
 import javax.print.Doc;
 
 @Service
@@ -33,7 +33,14 @@ public class DoctorServiceImpel implements DoctorService {
     @Override
     public void saveBioInformation(String userId, BioInfoRequest bioInfoRequest) {
         try {
-            Doctor doctor = doctorRepository.findByUserId(userId);
+            if (!ObjectId.isValid(userId)) {
+                throw new IllegalArgumentException("Invalid userId format.");
+            }
+            ObjectId userIdo = new ObjectId(userId);
+            Doctor doctor = doctorRepository.findByUserId(userIdo);
+            if (doctor == null) {
+                throw new ResourceNotFoundException("Doctor not found with userId: " + userIdo);
+            }
             doctor.setFirstName(bioInfoRequest.getFirstName());
             doctor.setMiddleName(bioInfoRequest.getMiddleName());
             doctor.setLastName(bioInfoRequest.getLastName());
@@ -51,7 +58,11 @@ public class DoctorServiceImpel implements DoctorService {
     @Override
     public void saveProfileInformation(String userId, ProfileInfoRequest profileInformationRequest) {
         try {
-            Doctor doctor = doctorRepository.findByUserId(userId);
+            if (!ObjectId.isValid(userId)) {
+                throw new IllegalArgumentException("Invalid userId format.");
+            }
+            ObjectId userIdo = new ObjectId(userId);
+            Doctor doctor = doctorRepository.findByUserId(userIdo);
             doctor.setMedicalLicense(profileInformationRequest.getMedicalLicense());
             doctor.setYearsOfExperience(profileInformationRequest.getYearsOfExperience());
             doctor.setMedicalLicenseExpiryDate(profileInformationRequest.getMedicalLicenseExpiryDate());
@@ -68,7 +79,11 @@ public class DoctorServiceImpel implements DoctorService {
     @Override
     public void saveContactInformation(String userId, ContactInfoRequest contactInfoRequest) {
         try {
-            Doctor doctor = doctorRepository.findByUserId(userId);
+            if (!ObjectId.isValid(userId)) {
+                throw new IllegalArgumentException("Invalid userId format.");
+            }
+            ObjectId userIdo = new ObjectId(userId);
+            Doctor doctor = doctorRepository.findByUserId(userIdo);
             doctor.setEmail(contactInfoRequest.getEmail());
             doctor.setPhoneNumber(contactInfoRequest.getPhoneNumber());
             doctor.setCountry(contactInfoRequest.getCountry());
@@ -85,7 +100,11 @@ public class DoctorServiceImpel implements DoctorService {
     @Override
     public void saveEducationInformation(String userId, EducationInfoRequest educationInfoRequest) {
         try {
-            Doctor doctor = doctorRepository.findByUserId(userId);
+            if (!ObjectId.isValid(userId)) {
+                throw new IllegalArgumentException("Invalid userId format.");
+            }
+            ObjectId userIdo = new ObjectId(userId);
+            Doctor doctor = doctorRepository.findByUserId(userIdo);
             doctor.setSchoolName(educationInfoRequest.getSchoolName());
             doctor.setGraduationYear(educationInfoRequest.getGraduationYear());
             doctor.setSpecialization(educationInfoRequest.getSpecialization());
@@ -102,7 +121,11 @@ public class DoctorServiceImpel implements DoctorService {
     @Override
     public void savePracticeInformation(String userId, PracticeInfoRequest practiceInfoRequest) {
         try {
-            Doctor doctor = doctorRepository.findByUserId(userId);
+            if (!ObjectId.isValid(userId)) {
+                throw new IllegalArgumentException("Invalid userId format.");
+            }
+            ObjectId userIdo = new ObjectId(userId);
+            Doctor doctor = doctorRepository.findByUserId(userIdo);
             doctor.setHospitalName(practiceInfoRequest.getHospitalName());
             doctor.setHourlyCharge(practiceInfoRequest.getHourlyCharge());
             doctor.setHospitalAddress(practiceInfoRequest.getHospitalAddress());
@@ -123,7 +146,11 @@ public class DoctorServiceImpel implements DoctorService {
     @Override
     public void saveAdditionalInformation(String userId, AdditionalInfoRequest additionalInfoRequest) {
         try {
-            Doctor doctor = doctorRepository.findByUserId(userId);
+            if (!ObjectId.isValid(userId)) {
+                throw new IllegalArgumentException("Invalid userId format.");
+            }
+            ObjectId userIdo = new ObjectId(userId);
+            Doctor doctor = doctorRepository.findByUserId(userIdo);
             doctor.setEducationHistory(additionalInfoRequest.getEducationHistory());
             doctor.setResearch(additionalInfoRequest.getResearch());
             doctor.setAwards(additionalInfoRequest.getAwards());
